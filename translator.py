@@ -24,16 +24,16 @@ def main():
 
     file_name = sys.argv[1]
 
-    with open("syntax.json", "r") as file:
+    with open("syntax.json", "r", encoding="utf-8") as file:
         keyword_mapping = json.load(file)
 
     try:
-        with open(f"{file_name}.brl", "r") as file:
+        with open(f"{file_name}.ec", "r", encoding="utf-8") as file:
             custom_code = file.read()
 
         execute_custom_code(custom_code, keyword_mapping)
     except FileNotFoundError:
-        print(f"Error: File '{file_name}.brl' not found.")
+        print(f"Error: File '{file_name}.ec' not found.")
     except Exception as e:
         print(f"An error occurred: {e}")
 
